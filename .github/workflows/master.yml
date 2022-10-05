@@ -1,0 +1,40 @@
+name: My Steam Games server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - run: npm install --save-dev
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./node_modules/.bin/tslint --project tsconfig.json --config tslint.yaml
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        envsubst < config.ts > .config.ts
+        mv .config.ts config.ts
+        tsc
+    
+#    - uses: xresloader/upload-to-github-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        file: "ext/my-steam-*.zip"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo well, hello there

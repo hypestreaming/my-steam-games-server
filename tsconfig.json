@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"noImplicitAny": true,
+		"skipLibCheck": true,
+		"target": "es6"
+	},
+	"include": [
+		"./service.ts",
+		"src/**/*.ts",
+		"test/**/*.ts",
+		"tools/**/*.ts"
+	],
+	"exclude": [
+		"attic/**/*.ts"
+	]
+}
