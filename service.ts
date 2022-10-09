@@ -4,30 +4,7 @@ import {RefreshGamesFunction} from "./src/functions/RefreshGamesFunction";
 
 export class Service {
 
-	private static logEvent(event: Event): void {
-
-		const short: any = {};
-
-		const ip = event.requestContext.identity.sourceIp;
-
-		if (event.queryStringParameters) {
-			short.queryStringParameters = event.queryStringParameters;
-		}
-
-		if (event.body) {
-			short.body = event.body;
-		}
-
-		if (event.headers && event.headers.Authorization) {
-			short.authorization = event.headers.Authorization;
-		}
-
-		console.log("Handling request: " + ip + " " + event.httpMethod + " " + event.path + " " + JSON.stringify(short));
-	}
-
 	public handle(event: Event, context: any, callback: any): void {
-
-		Service.logEvent(event);
 
 		switch (event.pathParameters.method) {
 

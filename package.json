@@ -11,16 +11,16 @@
 		"aws-sdk": "^2.1217.0",
 		"btoa": "^1.2.1",
 		"chai": "^4.2.0",
-		"hype-server": "github:gmegidish/hype-server",
 		"jsonwebtoken": "^8.4.0",
-		"mocha": "^5.2.0",
-		"nyc": "^13.1.0",
+		"mocha": "^10.0.0",
 		"pako": "^1.0.8",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.2",
-		"typings": "^2.1.1"
+		"typings": "^0.6.10"
 	},
 	"devDependencies": {
+		"hype-server": "github:hypestreaming/twitch-ext-services",
+		"nyc": "^15.1.0",
 		"serverless": "^3.22.0",
 		"serverless-offline": "^11.0.1",
 		"tslint": "^6.1.3",
