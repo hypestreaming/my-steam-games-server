@@ -1,6 +1,6 @@
-import {Event, Jwt, Response, Function} from 'hype-server/dist/src';
+import {Event, Jwt, Response, Function} from 'twitch-ext-services/src';
 import {Game, Steam} from "../steam";
-import {TwitchAuth} from "hype-server/src/twitch-auth";
+import {TwitchAuth} from 'twitch-ext-services/src/twitch-auth';
 
 interface RefreshGamesResponse extends Response {
 	status: string;
