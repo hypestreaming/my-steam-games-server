@@ -13,30 +13,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - run: npm install --save-dev
-
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - run: ./node_modules/.bin/tslint --project tsconfig.json --config tslint.yaml
-
-  build:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
       - run: envsubst < config.ts > .config.ts
       - run: mv .config.ts config.ts
+      - run: npm install --save-dev
+      - run: ./node_modules/.bin/tslint --project tsconfig.json --config tslint.yaml
       - run: tsc
-    
-#    - uses: xresloader/upload-to-github-release@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      with:
-#        file: "ext/my-steam-*.zip"
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo well, hello there
