@@ -12,9 +12,17 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 16.18.1
       - run: envsubst < config.ts > .config.ts
       - run: mv .config.ts config.ts
       - run: npm install --save-dev
-      - run: ./node_modules/.bin/tslint --project tsconfig.json --config tslint.yaml
-      - run: tsc
+      - run: $(npm bin)/tslint --project tsconfig.json --config tslint.yaml
+      - run: $(npm bin)/tsc
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - run: $(npm bin)/serverless deploy --stage production
+
