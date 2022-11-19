@@ -1,5 +1,5 @@
 import {config} from "./config";
-import {Event} from 'twitch-ext-services/src';
+import {Event} from 'twitch-ext-services/dist/src';
 import {RefreshGamesFunction} from "./src/functions/RefreshGamesFunction";
 
 export class Service {

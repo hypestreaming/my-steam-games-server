@@ -1,6 +1,5 @@
-import {Event, Jwt, Response, Function} from 'twitch-ext-services/src';
+import {Event, Jwt, Response, Function, TwitchAuth} from 'twitch-ext-services/dist/src';
 import {Game, Steam} from "../steam";
-import {TwitchAuth} from 'twitch-ext-services/src/twitch-auth';
 
 interface RefreshGamesResponse extends Response {
 	status: string;
