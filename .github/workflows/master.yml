@@ -14,8 +14,10 @@ jobs:
         with:
           node-version: 16.18.1
       - run: envsubst < config.ts > .config.ts
+        env:
+          STEAM_KEY: ${{ secrets.STEAM_KEY }}
+          TWITCH_EXTENSION_SECRET: ${{ secrets.TWITCH_EXTENSION_SECRET }}
       - run: mv .config.ts config.ts
-      - run: cat config.ts
       - run: npm install --save-dev
       - run: $(npm bin)/tslint --project tsconfig.json --config tslint.yaml
       - run: $(npm bin)/tsc
