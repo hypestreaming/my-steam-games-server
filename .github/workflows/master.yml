@@ -9,12 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16.18.1
       - run: envsubst < config.ts > .config.ts
       - run: mv .config.ts config.ts
+      - run: cat config.ts
       - run: npm install --save-dev
       - run: $(npm bin)/tslint --project tsconfig.json --config tslint.yaml
       - run: $(npm bin)/tsc
